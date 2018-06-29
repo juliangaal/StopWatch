@@ -55,7 +55,7 @@ matrix:
           sources:
             - llvm-toolchain-precise-3.8
           packages:
-            - clang-4.0
+            - clang-3.8
       env:
         - MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
     - os: linux
