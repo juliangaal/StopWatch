@@ -91,8 +91,7 @@ script:
     - mkdir build && cd build
     - cmake ..
     - make -j10
-    - cd
-    - cd test && mkdir build && cd build
+    - cd ../test/ && mkdir build && cd build
     - cmake ..
     - make -j10
     - ./StopWatchTest
