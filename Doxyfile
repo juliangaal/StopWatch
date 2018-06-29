@@ -444,7 +444,7 @@ GENERATE_TODOLIST      = YES
 GENERATE_TESTLIST      = YES
 
 # The GENERATE_BUGLIST tag can be used to enable (YES) or
-# disable (NO) the bug list. This list is created by putting \bug
+# disable (NO) the bug list. This list is created by putting \bug q
 # commands in the documentation.
 
 GENERATE_BUGLIST       = YES
