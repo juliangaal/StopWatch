@@ -1,8 +1,7 @@
 StopWatch
 =========
 
-Timing utility, wraps C++11 std::chrono in an easy to use StopWatch utility
+Timing utility, wraps C++11/14/18 std::chrono in an easy to use StopWatch utility
 
 
-Originally published at:
-kjellkod.wordpress.com/2012/02/06/exploring-c11-part1-time/
+Originally forked from [here](https://github.com/KjellKod/StopWatch)
