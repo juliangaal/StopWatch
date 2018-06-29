@@ -5,6 +5,7 @@
 #include <chrono>
 #include <thread>
 #include <string>
+#include <cassert>
 #include "StopWatch.hpp"
 
 using std::string;
