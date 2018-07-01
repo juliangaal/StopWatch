@@ -8,12 +8,12 @@ Originally forked from [here](https://github.com/KjellKod/StopWatch)
 
 ## Usage
 
-Import
+#### Import
 ```cpp
 #include <StopWatch>
 ```
 
-Start StopWatch
+#### Start StopWatch
 ```cpp
 int main(void) {
     StopWatch s;
@@ -21,7 +21,7 @@ int main(void) {
 }
 ```
 
-Restart StopWatch
+#### Restart StopWatch
 ```cpp
 int main(void) {
     StopWatch s;
@@ -33,7 +33,7 @@ int main(void) {
 }
 ```
 
-Pause/Resume StopWatch
+#### Pause/Resume StopWatch
 ```cpp
 int main(void) {
     StopWatch s;
@@ -46,7 +46,7 @@ int main(void) {
 }
 ```
 
-Get Elapsed Time
+#### Get Elapsed Time
 ```cpp
 int main(void) {
     StopWatch s;
@@ -59,7 +59,7 @@ int main(void) {
 }
 ```
 
-Use timepoints during running StopWatch. 
+#### Use timepoints during running StopWatch. 
 ```cpp
 int main(void) {
     StopWatch s;
