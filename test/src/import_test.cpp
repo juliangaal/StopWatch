@@ -1,12 +1,13 @@
 //
 // Created by Julian on 30.06.18.
+// Only exists for travis
 //
 
-#include <StopWatch.hpp>
+#include <StopWatch/StopWatch.hpp>
 #include <iostream>
 
 int main(void) {
   StopWatch s;
-  auto e = s.ElapsedMs();
+  std::cout << s.ElapsedMs() << "\n";
   return 0;
 }
