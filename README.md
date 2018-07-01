@@ -51,9 +51,9 @@ Get Elapsed Time
 int main(void) {
     StopWatch s;
     foo();
-    cout << s.ElapsedNs(); // Elapsed Nanoseconds
-    cout << s.ElapsedUs(); // Elapsed Microseconds
-    cout << s.ElapsedMs(); // Elapsed Milliseconds
+    cout << s.ElapsedNs();  // Elapsed Nanoseconds
+    cout << s.ElapsedUs();  // Elapsed Microseconds
+    cout << s.ElapsedMs();  // Elapsed Milliseconds
     cout << s.ElapsedSec(); // Elapsed Seconds
     return 0;
 }
