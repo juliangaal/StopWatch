@@ -33,6 +33,14 @@ int main(void) {
                return s.ElapsedSec();
              });
 
+  RunAndTime("Run for 1s, wait for 1, set timepoint", 1,
+             []() { sleep_for(seconds(1)); },
+             [](StopWatch &s) {
+               s.addTimePoint("custom");
+               std::this_thread::sleep_for(seconds(1));
+               return s.ElapsedSec("custom");
+             });
+
   RunAndTime("Run for 1000ms", 1000,
              []() { sleep_for(milliseconds(1000)); },
              [](StopWatch &s) {
