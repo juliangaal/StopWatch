@@ -11,6 +11,8 @@
 #define STOP_WATCH_HPP
 
 #include <chrono>
+#include <unordered_map>
+#include <string>
 
 using Clock = std::chrono::steady_clock;
 using rep = std::chrono::milliseconds::rep;
@@ -21,6 +23,8 @@ using std::chrono::seconds;
 using std::chrono::minutes;
 using std::chrono::hours;
 using std::chrono::duration_cast;
+using std::unordered_map;
+using std::string;
 
 class StopWatch {
  public:
@@ -37,27 +41,31 @@ class StopWatch {
 
   /**
   * Calculates elapsed nanoseconds
-  * @return Elapsed nanoseconds
+  * @param timepointID (optional) id of timepoint to get elapsed time from
+  * @return Elapsed nanoseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedNs() const;
+  rep ElapsedNs(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed microseconds
-  * @return Elapsed microseconds
+  * @param timepointID (optional) id of timepoint to get elapsed time from
+  * @return Elapsed microseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedUs() const;
+  rep ElapsedUs(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed milliseconds
-  * @return Elapsed milliseconds
+  * @param timepointID (optional) id of timepoint to get elapsed time from
+  * @return Elapsed milliseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedMs() const;
+  rep ElapsedMs(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed seconds
-  * @return Elapsed seconds
+  * @param timepointID (optional) id of timepoint to get elapsed time from
+  * @return Elapsed seconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedSec() const;
+  rep ElapsedSec(const string &timepointID = "start") const;
 
   /**
   * Resets the start point
@@ -71,6 +79,12 @@ class StopWatch {
   Clock::time_point RestartPoint();
 
   /**
+   * Add timepoint
+   * @param id name of timepoint for later use
+   */
+  void addTimePoint(const string &id);
+
+  /**
    * Pauses timer
    */
   void Pause();
@@ -81,8 +95,7 @@ class StopWatch {
   void Resume();
 
  private:
-  Clock::time_point start;
-  Clock::time_point pause;
+  unordered_map<string, Clock::time_point> timepoints;
   Clock::duration pauseDuration;
   bool paused;
 };
