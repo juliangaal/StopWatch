@@ -6,11 +6,21 @@ Timing utility, wraps C++11/14/17 [std::chrono](https://en.cppreference.com/w/cp
 
 Originally forked from [here](https://github.com/KjellKod/StopWatch)
 
+## Installation
+```bash
+git clone https://github.com/juliangaal/StopWatch
+cd StopWatch
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=your_install_prefix .. # default /usr/local on Mac/Linux
+make
+make install
+```
+
 ## Usage
 
 #### Import
 ```cpp
-#include <StopWatch>
+#include <StopWatch/StopWatch.hpp>
 ```
 
 #### Start StopWatch
