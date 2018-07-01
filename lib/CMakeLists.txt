@@ -15,7 +15,7 @@ install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION bin)
 
 install(EXPORT ${PROJECT_NAME}-targets
-        FILE ${PROJECT_NAME}-config.cmake
+        FILE ${PROJECT_NAME}Config.cmake
         DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(FILES include/${PROJECT_NAME}.hpp DESTINATION include/${PROJECT_NAME})
