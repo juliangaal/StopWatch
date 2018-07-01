@@ -5,8 +5,7 @@
  * 
  * Created on 2018-29-06
  */
-
-#include "../include/StopWatch.hpp"
+#include "StopWatch.hpp"
 
 StopWatch::StopWatch() : pauseDuration(0),
                          paused(false) {
