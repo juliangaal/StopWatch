@@ -2,11 +2,9 @@
 // Created by Julian on 29.06.18.
 //
 #include <iostream>
-#include <chrono>
 #include <thread>
-#include <string>
 #include <cassert>
-#include "StopWatch.hpp"
+#include <StopWatch/StopWatch.hpp>
 
 using std::string;
 using std::this_thread::sleep_for;
@@ -20,9 +18,7 @@ void RunAndTime(string title, double goal, TimingFunction timingFunc, ResultFunc
 }
 
 int main(void) {
-  RunAndTime("Run for 1s", 1,
-             []() { sleep_for(seconds(1)); },
-             [](StopWatch &s) { return s.ElapsedSec(); });
+  RunAndTime("Run for 1s", 1, []() { sleep_for(seconds(1)); }, [](StopWatch &s) { return s.ElapsedSec(); });
 
   RunAndTime("Run for 1s, wait for 1", 1,
              []() { sleep_for(seconds(1)); },

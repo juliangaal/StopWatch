@@ -5,8 +5,6 @@
  *
  * Created on 2018-29-06
  */
-
-
 #ifndef STOP_WATCH_HPP
 #define STOP_WATCH_HPP
 
