@@ -6,7 +6,7 @@
 #include <thread>
 #include <string>
 #include <cassert>
-#include "StopWatch.hpp"
+#include <StopWatch.hpp>
 
 using std::string;
 using std::this_thread::sleep_for;
