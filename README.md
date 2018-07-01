@@ -58,4 +58,21 @@ int main(void) {
     return 0;
 }
 ```
+
+Use timepoints during running StopWatch. 
+```cpp
+int main(void) {
+    StopWatch s;
+    foo();
+    s.addTimePoint("foo");
+    bar();
+    s.addTimePoint("bar");
+    cout << s.ElapsedMs();      // Elapsed time since start
+    cout << s.ElapsedMs("foo"); // Elapsed time since foo timepoint
+    cout << s.ElapsedMs("bar"); // Elapsed time since bar timepoint
+    return 0;
+}
+```
+If id of timepoint can't be found, elapsed time since start.
+
 You can also run the provided Doxyfile to get generated docs.
