@@ -15,7 +15,7 @@ cmake -DCMAKE_INSTALL_PREFIX=your_install_prefix .. # default /usr/local on Mac/
 make
 sudo make install
 ```
-or use provided [install script](./install.bash) with default `CMAKE_INSTALL_PREFIX=/usr/local`
+or use provided [install script](./install/install.bash) with default `CMAKE_INSTALL_PREFIX=/usr/local`
 
 ## Usage
 
