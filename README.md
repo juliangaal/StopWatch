@@ -13,7 +13,7 @@ cd StopWatch
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=your_install_prefix .. # default /usr/local on Mac/Linux
 make
-make install
+sudo make install
 ```
 or use provided [install script](./install.bash) with default `CMAKE_INSTALL_PREFIX=/usr/local`
 
