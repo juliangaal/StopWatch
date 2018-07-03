@@ -78,9 +78,9 @@ int main(void) {
     s.addTimePoint("foo");
     bar();
     s.addTimePoint("bar");
-    cout << s.ElapsedMs();      // Elapsed time since start
-    cout << s.ElapsedMs("foo"); // Elapsed time since foo timepoint
-    cout << s.ElapsedMs("bar"); // Elapsed time since bar timepoint
+    cout << s.ElapsedMs();           // Elapsed time since start
+    cout << s.ElapsedMsSince("foo"); // Elapsed time since foo timepoint
+    cout << s.ElapsedMsSince("bar"); // Elapsed time since bar timepoint
     return 0;
 }
 ```

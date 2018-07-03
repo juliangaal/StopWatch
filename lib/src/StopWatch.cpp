@@ -23,28 +23,44 @@ StopWatch &StopWatch::operator=(const StopWatch &rhs) {
   return *this;
 }
 
-rep StopWatch::ElapsedNs(const string &timepointID) const {
+rep StopWatch::ElapsedNs() const {
+    return duration_cast<nanoseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
+}
+
+rep StopWatch::ElapsedUs() const {
+    return duration_cast<microseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
+}
+
+rep StopWatch::ElapsedMs() const {
+    return duration_cast<milliseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
+}
+
+rep StopWatch::ElapsedSec() const {
+    return duration_cast<seconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
+}
+
+rep StopWatch::ElapsedNsSince(const string &timepointID) const {
   if (timepoints.find(timepointID) != end(timepoints))
     return duration_cast<nanoseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<nanoseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
-rep StopWatch::ElapsedUs(const string &timepointID) const {
+rep StopWatch::ElapsedUsSince(const string &timepointID) const {
   if (timepoints.find(timepointID) != end(timepoints))
     return duration_cast<microseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<microseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
-rep StopWatch::ElapsedMs(const string &timepointID) const {
+rep StopWatch::ElapsedMsSince(const string &timepointID) const {
   if (timepoints.find(timepointID) != end(timepoints))
     return duration_cast<milliseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<milliseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
-rep StopWatch::ElapsedSec(const string &timepointID) const {
+rep StopWatch::ElapsedSecSince(const string &timepointID) const {
   if (timepoints.find(timepointID) != end(timepoints))
     return duration_cast<seconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else

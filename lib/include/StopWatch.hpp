@@ -39,32 +39,54 @@ class StopWatch {
 
   /**
   * Calculates elapsed nanoseconds
-  * @param timepointID (optional) id of timepoint to get elapsed time from
+  * @return Elapsed nanoseconds since start
+  */
+  rep ElapsedNs() const;
+
+  /**
+  * Calculates elapsed microseconds
+  * @return Elapsed microseconds since start
+  */
+  rep ElapsedUs() const;
+
+  /**
+  * Calculates elapsed milliseconds
+  * @return Elapsed milliseconds since start
+  */
+  rep ElapsedMs() const;
+
+  /**
+  * Calculates elapsed seconds
+  * @return Elapsed seconds since start
+  */
+  rep ElapsedSec() const;
+
+  /**
+  * Calculates elapsed nanoseconds
   * @return Elapsed nanoseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedNs(const string &timepointID = "start") const;
+  rep ElapsedNsSince(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed microseconds
   * @param timepointID (optional) id of timepoint to get elapsed time from
   * @return Elapsed microseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedUs(const string &timepointID = "start") const;
+  rep ElapsedUsSince(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed milliseconds
   * @param timepointID (optional) id of timepoint to get elapsed time from
   * @return Elapsed milliseconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedMs(const string &timepointID = "start") const;
+  rep ElapsedMsSince(const string &timepointID = "start") const;
 
   /**
   * Calculates elapsed seconds
   * @param timepointID (optional) id of timepoint to get elapsed time from
   * @return Elapsed seconds since timepoint. If timepoint doesn't exist: return time since start
   */
-  rep ElapsedSec(const string &timepointID = "start") const;
-
+  rep ElapsedSecSince(const string &timepointID = "start") const;
   /**
   * Resets the start point
   */
