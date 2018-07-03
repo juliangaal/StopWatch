@@ -34,7 +34,7 @@ int main(void) {
              [](StopWatch &s) {
                s.addTimePoint("custom");
                std::this_thread::sleep_for(seconds(1));
-               return s.ElapsedSec("custom");
+               return s.ElapsedSecSince("custom");
              });
 
   RunAndTime("Run for 1000ms", 1000,
