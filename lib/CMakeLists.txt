@@ -9,13 +9,21 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         $<INSTALL_INTERFACE:include>) # this is part of description of package: include path for user
 
 install(TARGETS ${PROJECT_NAME}
-        EXPORT ${PROJECT_NAME}-targets
+        EXPORT ${PROJECT_NAME}Targets
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin)
 
-install(EXPORT ${PROJECT_NAME}-targets
+install(EXPORT ${PROJECT_NAME}Targets
         FILE ${PROJECT_NAME}Config.cmake
         DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(FILES include/${PROJECT_NAME}.hpp DESTINATION include/${PROJECT_NAME})
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file("${PROJECT_NAME}ConfigVersion.cmake"
+        VERSION ${${PROJECT_NAME}_VERSION}
+        COMPATIBILITY SameMajorVersion)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+        DESTINATION lib/cmake/${PROJECT_NAME})

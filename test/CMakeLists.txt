@@ -4,7 +4,7 @@ project(SOME)
 set(CMAKE_CXX_FLAGS_DEBUG "-Wall -g -W -Weffc++ -Werror")
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(StopWatch REQUIRED)
+find_package(StopWatch 0.1 REQUIRED)
 
 add_executable(StopWatchTest src/stopwatch_test.cpp)
 target_link_libraries(StopWatchTest PUBLIC StopWatch)
