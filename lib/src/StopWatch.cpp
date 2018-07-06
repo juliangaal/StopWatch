@@ -7,6 +7,8 @@
  */
 #include "StopWatch.hpp"
 
+using std::pair;
+
 StopWatch::StopWatch() : pauseDuration(0),
                          paused(false) {
   timepoints["start"] = Clock::now();
@@ -99,6 +101,6 @@ void StopWatch::addTimePoint(const string &id) {
   if (timepoints.find(id) != end(timepoints)) {
     timepoints.at(id) = Clock::now();
   } else {
-    timepoints[id] = Clock::now();
+    timepoints.insert(pair<string, Clock::time_point>(id, Clock::now()));
   }
 }
