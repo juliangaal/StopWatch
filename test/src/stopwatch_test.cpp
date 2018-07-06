@@ -10,52 +10,83 @@ using std::string;
 using std::this_thread::sleep_for;
 
 template<typename TimingFunction, typename ResultFunction>
-void RunAndTime(string title, double goal, TimingFunction timingFunc, ResultFunction resultFunc) {
+void RunAndTime(string title, rep goal, TimingFunction timingFunc, ResultFunction resultFunc) {
+  std::cout << title;
   StopWatch s;
   timingFunc();
   assert(goal == resultFunc(s));
-  std::cout << title << " -> Success" << "\n";
+  std::cout << " -> Success" << "\n";
+}
+
+template<typename T>
+bool inRange(const T lower_bound, const T result, const T upper_bound) {
+  return result > lower_bound && result < upper_bound;
 }
 
 int main(void) {
-  RunAndTime("Run for 1s", 1, []() { sleep_for(seconds(1)); }, [](StopWatch &s) { return s.ElapsedSec(); });
+  {
+    const string title = "Run for 1s";
+    constexpr rep goal = 1.0;
+    auto timing_func = []() { return sleep_for(seconds(1)); };
+    auto result_func = [](const StopWatch &s) { return s.ElapsedSec(); };
+    RunAndTime(title, goal, timing_func, result_func);
+  }
 
-  RunAndTime("Run for 1s, wait for 1", 1,
-             []() { sleep_for(seconds(1)); },
-             [](StopWatch &s) {
-               s.Pause();
-               std::this_thread::sleep_for(seconds(1));
-               s.Resume();
-               return s.ElapsedSec();
-             });
+  {
+    const string title = "Run for 1s, wait for 1";
+    constexpr rep goal = 1.0;
+    auto timing_func = []() { return sleep_for(seconds(1)); };
+    auto result_func = [](StopWatch &s) {
+      s.Pause();
+      std::this_thread::sleep_for(seconds(1));
+      s.Resume();
+      return s.ElapsedSec();
+    };
+    RunAndTime(title, goal, timing_func, result_func);
+  }
 
-  RunAndTime("Run for 1s, wait for 1, set timepoint", 1,
-             []() { sleep_for(seconds(1)); },
-             [](StopWatch &s) {
-               s.addTimePoint("custom");
-               std::this_thread::sleep_for(seconds(1));
-               return s.ElapsedSecSince("custom");
-             });
+  {
+    const string title = "Run for 1s, wait for 1, set timepoint";
+    constexpr rep goal = 1.0;
+    auto timing_func = []() { return sleep_for(seconds(1)); };
+    auto result_func = [](StopWatch &s) {
+      s.addTimePoint("custom");
+      std::this_thread::sleep_for(seconds(1));
+      return s.ElapsedSecSince("custom");
+    };
+    RunAndTime(title, goal, timing_func, result_func);
+  }
 
-  RunAndTime("Run for 1000ms", 1000,
-             []() { sleep_for(milliseconds(1000)); },
-             [](StopWatch &s) {
-               auto result = s.ElapsedMs();
-               if (result < 1500 && result >= 1000)
-                 return 1000;
-               else
-                 return 999;
-             });
+  {
+    const string title = "Run for 1000ms";
+    constexpr rep goal = 1000.0;
+    constexpr rep upper_limit = 1500.0;
+    auto timing_func = []() { return sleep_for(milliseconds(1000)); };
+    auto result_func = [&goal, &upper_limit](StopWatch &s) {
+      auto result = s.ElapsedMs();
+      if (inRange(goal, result, upper_limit))
+        return goal;
+      else
+        return goal * 2;
+    };
+    RunAndTime(title, goal, timing_func, result_func);
+  }
 
-  RunAndTime("Run for 1000000ns", 1000000,
-             []() { sleep_for(nanoseconds(1000000)); },
-             [](StopWatch &s) {
-               auto result = s.ElapsedNs();
-               if (result < 1500000 && result >= 1000000)
-                 return 1000000;
-               else
-                 return 999999;
-             });
+  {
+    const string title = "Run for 1000000ns";
+    constexpr rep goal = 1000000.0;
+    constexpr rep upper_limit = 1500000.0;
+
+    auto timing_func = []() { return sleep_for(nanoseconds(1000000)); };
+    auto result_func = [&goal, &upper_limit](StopWatch &s) {
+      auto result = s.ElapsedNs();
+      if (inRange(goal, result, upper_limit))
+        return goal;
+      else
+        return goal * 2;
+    };
+    RunAndTime(title, goal, timing_func, result_func);
+  }
 
   return EXIT_SUCCESS;
 }
