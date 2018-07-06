@@ -26,8 +26,13 @@ using std::string;
 
 class StopWatch {
  public:
+  /// default constructor
   StopWatch();
+
+  /// copy constructor
   StopWatch(const StopWatch &);
+
+  /// default destructor
   ~StopWatch() = default;
 
   /**
@@ -115,8 +120,19 @@ class StopWatch {
   void Resume();
 
  private:
+  /**
+   * Saves timepoints with id and time_point
+   */
   unordered_map<string, Clock::time_point> timepoints;
+
+  /**
+   * Saves total pause duration for subtracting from total runtime
+   */
   Clock::duration pauseDuration;
+
+  /**
+   * If StopWatch is paused or not
+   */
   bool paused;
 };
 
