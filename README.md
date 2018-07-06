@@ -62,10 +62,10 @@ int main(void) {
 int main(void) {
     StopWatch s;
     foo();
-    cout << s.ElapsedNs();  // Elapsed Nanoseconds
-    cout << s.ElapsedUs();  // Elapsed Microseconds
-    cout << s.ElapsedMs();  // Elapsed Milliseconds
-    cout << s.ElapsedSec(); // Elapsed Seconds
+    cout << s.ElapsedNs()  << "\n";  // Elapsed Nanoseconds
+    cout << s.ElapsedUs()  << "\n";  // Elapsed Microseconds
+    cout << s.ElapsedMs()  << "\n";  // Elapsed Milliseconds
+    cout << s.ElapsedSec() << "\n"; // Elapsed Seconds
     return 0;
 }
 ```
@@ -78,9 +78,9 @@ int main(void) {
     s.addTimePoint("foo");
     bar();
     s.addTimePoint("bar");
-    cout << s.ElapsedMs();           // Elapsed time since start
-    cout << s.ElapsedMsSince("foo"); // Elapsed time since foo timepoint
-    cout << s.ElapsedMsSince("bar"); // Elapsed time since bar timepoint
+    cout << s.ElapsedMs() << "\n";           // Elapsed time since start
+    cout << s.ElapsedMsSince("foo") << "\n"; // Elapsed time since foo timepoint
+    cout << s.ElapsedMsSince("bar") << "\n"; // Elapsed time since bar timepoint
     return 0;
 }
 ```
