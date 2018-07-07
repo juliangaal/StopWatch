@@ -1,6 +1,6 @@
 # StopWatch
 
-[![Build Status](https://travis-ci.org/juliangaal/StopWatch.svg?branch=master)](https://travis-ci.org/juliangaal/StopWatch)
+[![Build Status](https://travis-ci.org/juliangaal/StopWatch.svg?branch=master)](https://travis-ci.org/juliangaal/StopWatch) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/86aa779facf347bbaed1062596dacf58)](https://www.codacy.com/app/juliangaal/StopWatch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=juliangaal/StopWatch&amp;utm_campaign=Badge_Grade)
 
 Timing utility, wraps C++11/14/17 [std::chrono](https://en.cppreference.com/w/cpp/header/chrono) in an easy to use StopWatch utility
 
