@@ -4,7 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <cassert>
-#include <StopWatch/StopWatch.hpp>
+#include "../../lib/include/StopWatch.hpp"
 
 using std::string;
 using std::this_thread::sleep_for;
