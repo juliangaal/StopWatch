@@ -5,7 +5,8 @@
  * 
  * Created on 2018-29-06
  */
-#include "StopWatch.hpp"
+#include "../include/StopWatch.hpp"
+#include <iostream>
 
 using std::pair;
 
@@ -101,6 +102,8 @@ void StopWatch::addTimePoint(const string &id) {
   if (timepoints.find(id) != end(timepoints)) {
     timepoints.at(id) = Clock::now();
   } else {
-    timepoints.insert(pair<string, Clock::time_point>(id, Clock::now()));
+    auto[_, success] = timepoints.insert(pair<string, Clock::time_point>(id, Clock::now()));
+    if (!success)
+      std::cerr << "Can't set timepoint\n";
   }
 }
