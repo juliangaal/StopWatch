@@ -102,7 +102,9 @@ void StopWatch::addTimePoint(const string &id) {
   if (timepoints.find(id) != end(timepoints)) {
     timepoints.at(id) = Clock::now();
   } else {
-    auto[_, success] = timepoints.insert(pair<string, Clock::time_point>(id, Clock::now()));
+    unordered_map<string, Clock::time_point>::iterator iter;
+    bool success;
+    std::tie(iter, success) = timepoints.insert(pair<string, Clock::time_point>(id, Clock::now()));
     if (!success)
       std::cerr << "Can't set timepoint\n";
   }
