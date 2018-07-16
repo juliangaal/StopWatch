@@ -24,6 +24,7 @@ bool inRange(const T lower_bound, const T result, const T upper_bound) {
 }
 
 int main(void) {
+  StopWatch s;
   {
     const string title = "Run for 1s";
     constexpr rep goal = 1.0;
@@ -87,6 +88,8 @@ int main(void) {
     };
     RunAndTime(title, goal, timing_func, result_func);
   }
+
+  std::cout << s;
 
   return EXIT_SUCCESS;
 }

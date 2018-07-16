@@ -43,6 +43,14 @@ class StopWatch {
   StopWatch &operator=(const StopWatch &rhs);
 
   /**
+   * Operator overloaded: pipes summary into ostream
+   * @param os std::ostream
+   * @param s StopWatch object
+   * @return modified ostream
+   */
+  friend std::ostream &operator<<(std::ostream &os, const StopWatch &s);
+
+  /**
   * Calculates elapsed nanoseconds
   * @return Elapsed nanoseconds since start
   */

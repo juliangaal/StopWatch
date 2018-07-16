@@ -26,10 +26,7 @@ or use provided [install script](./install/install.bash) with default `CMAKE_INS
 
 #### Start StopWatch
 ```cpp
-int main(void) {
-    StopWatch s;
-    return 0;
-}
+StopWatch s;
 ```
 
 #### Restart StopWatch
@@ -70,6 +67,17 @@ int main(void) {
 }
 ```
 
+or simply get summary:
+
+```cpp
+int main(void) {
+    StopWatch s;
+    foo();
+    std::cout << s;
+    return 0;
+}
+```
+will output the time in format `seconds:milliseconds:nanoseconds`.
 #### Use timepoints during running StopWatch. 
 ```cpp
 int main(void) {

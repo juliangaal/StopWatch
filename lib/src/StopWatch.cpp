@@ -109,3 +109,8 @@ void StopWatch::addTimePoint(const string &id) {
       std::cerr << "Can't set timepoint\n";
   }
 }
+
+std::ostream &operator<<(std::ostream &os, const StopWatch &s) {
+  os << s.ElapsedSec() << ":" << s.ElapsedMs() << ":" << s.ElapsedNs() << "s\n";
+  return os;
+}
