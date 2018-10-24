@@ -3,6 +3,7 @@ set(SOURCES src/StopWatch.cpp)
 set(HEADERS include/StopWatch.hpp)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

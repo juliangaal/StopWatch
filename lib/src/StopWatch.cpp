@@ -9,6 +9,15 @@
 #include <iostream>
 
 using std::pair;
+using std::chrono::nanoseconds;
+using std::chrono::microseconds;
+using std::chrono::milliseconds;
+using std::chrono::seconds;
+using std::chrono::minutes;
+using std::chrono::hours;
+using std::chrono::duration_cast;
+using std::unordered_map;
+using std::string;
 
 StopWatch::StopWatch() : pauseDuration(0),
                          paused(false) {
@@ -43,28 +52,28 @@ rep StopWatch::ElapsedSec() const {
 }
 
 rep StopWatch::ElapsedNsSince(const string &timepointID) const {
-  if (timepoints.find(timepointID) != end(timepoints))
+  if (timepoints.find(timepointID) != std::end(timepoints))
     return duration_cast<nanoseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<nanoseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
 rep StopWatch::ElapsedUsSince(const string &timepointID) const {
-  if (timepoints.find(timepointID) != end(timepoints))
+  if (timepoints.find(timepointID) != std::end(timepoints))
     return duration_cast<microseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<microseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
 rep StopWatch::ElapsedMsSince(const string &timepointID) const {
-  if (timepoints.find(timepointID) != end(timepoints))
+  if (timepoints.find(timepointID) != std::end(timepoints))
     return duration_cast<milliseconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<milliseconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
 }
 
 rep StopWatch::ElapsedSecSince(const string &timepointID) const {
-  if (timepoints.find(timepointID) != end(timepoints))
+  if (timepoints.find(timepointID) != std::end(timepoints))
     return duration_cast<seconds>(Clock::now() - timepoints.at(timepointID) - pauseDuration).count();
   else
     return duration_cast<seconds>(Clock::now() - timepoints.at("start") - pauseDuration).count();
@@ -81,7 +90,7 @@ Clock::time_point StopWatch::RestartPoint() {
 
 void StopWatch::Pause() {
   if (!paused) {
-    if (timepoints.find("pause") != end(timepoints)) {
+    if (timepoints.find("pause") != std::end(timepoints)) {
       timepoints.at("pause") = Clock::now();
       paused = true;
     } else {
@@ -99,7 +108,7 @@ void StopWatch::Resume() {
 }
 
 void StopWatch::addTimePoint(const string &id) {
-  if (timepoints.find(id) != end(timepoints)) {
+  if (timepoints.find(id) != std::end(timepoints)) {
     timepoints.at(id) = Clock::now();
   } else {
     unordered_map<string, Clock::time_point>::iterator iter;

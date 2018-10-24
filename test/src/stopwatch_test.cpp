@@ -8,6 +8,13 @@
 
 using std::string;
 using std::this_thread::sleep_for;
+using std::chrono::nanoseconds;
+using std::chrono::microseconds;
+using std::chrono::milliseconds;
+using std::chrono::seconds;
+using std::chrono::minutes;
+using std::chrono::hours;
+using std::chrono::duration_cast;
 
 template<typename TimingFunction, typename ResultFunction>
 void RunAndTime(string title, rep goal, TimingFunction timingFunc, ResultFunction resultFunc) {
@@ -63,7 +70,7 @@ int main(void) {
     constexpr rep goal = 1000.0;
     constexpr rep upper_limit = 1500.0;
     auto timing_func = []() { return sleep_for(milliseconds(1000)); };
-    auto result_func = [&goal, &upper_limit](StopWatch &s) {
+    auto result_func = [&](StopWatch &s) {
       auto result = s.ElapsedMs();
       if (inRange(goal, result, upper_limit))
         return goal;
@@ -79,7 +86,7 @@ int main(void) {
     constexpr rep upper_limit = 1500000.0;
 
     auto timing_func = []() { return sleep_for(nanoseconds(1000000)); };
-    auto result_func = [&goal, &upper_limit](StopWatch &s) {
+    auto result_func = [&](StopWatch &s) {
       auto result = s.ElapsedNs();
       if (inRange(goal, result, upper_limit))
         return goal;
